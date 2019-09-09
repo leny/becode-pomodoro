@@ -3,7 +3,11 @@
   "version": "0.0.1",
   "private": true,
   "description": "My Pomodoro",
-  "scripts": { },
+  "scripts": {
+    "lint": "npx eslint --fix --cache src",
+    "build": "npx parcel build src/index.html",
+    "work": "npx parcel src/index.html"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/leny/becode-pomodoro.git"
@@ -13,5 +17,37 @@
   "bugs": {
     "url": "https://github.com/leny/becode-pomodoro/issues"
   },
-  "homepage": "https://github.com/leny/becode-pomodoro#readme"
+  "homepage": "https://github.com/leny/becode-pomodoro#readme",
+  "dependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-decorators": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
+    "@becode/eslint-config": "^0.7.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.3.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-unicorn": "^10.0.0",
+    "husky": "^3.0.5",
+    "lint-staged": "^9.2.5",
+    "parcel-bundler": "^1.12.3",
+    "prettier": "^1.18.2"
+  },
+  "lint-staged": {
+    "*.js": [
+      "npx eslint --fix --cache",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx lint-staged"
+    }
+  }
 }
