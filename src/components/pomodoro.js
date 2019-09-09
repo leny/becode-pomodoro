@@ -12,7 +12,7 @@ import Display from "./display/display";
 import Tools from "./tools/tools";
 import Modal from "./modal/modal";
 
-const DEFAULT_POMODORO_VALUE = 0.05;
+const DEFAULT_POMODORO_VALUE = 25;
 
 const Pomodoro = () => {
     const [running, setRunning] = useState(false);
