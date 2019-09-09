@@ -8,5 +8,5 @@
 
 import React from "react";
 
-const Cyphers = () => <span>{"00"}</span>;
+const Cyphers = ({value}) => <span>{`${value}`.padStart(2, "0")}</span>;
 export default Cyphers;

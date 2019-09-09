@@ -15,11 +15,19 @@ const styles = {
     textAlign: "center",
 };
 
-const Display = () => (
-    <div style={styles}>
-        <Cyphers />
-        <span>{":"}</span>
-        <Cyphers />
-    </div>
-);
+const Display = ({seconds, running}) => {
+    let separator = ":";
+
+    if (running) {
+        separator = seconds % 2 ? ":" : " ";
+    }
+
+    return (
+        <div style={styles}>
+            <Cyphers value={Math.floor(seconds / 60)} />
+            <span>{separator}</span>
+            <Cyphers value={seconds % 60} />
+        </div>
+    );
+};
 export default Display;
