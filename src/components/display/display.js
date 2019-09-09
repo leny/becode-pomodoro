@@ -7,6 +7,7 @@
  */
 
 import React from "react";
+import PropTypes from "prop-types";
 
 import Cyphers from "./cyphers";
 
@@ -30,4 +31,10 @@ const Display = ({seconds, running}) => {
         </div>
     );
 };
+
+Display.propTypes = {
+    seconds: PropTypes.number.isRequired,
+    running: PropTypes.bool,
+};
+
 export default Display;
