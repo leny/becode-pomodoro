@@ -19,8 +19,13 @@ const styles = {
     width: "100%",
 };
 
-const Button = ({label, title}) => (
-    <button style={styles} type={"button"} title={title || label}>
+const Button = ({disabled = false, onClick, label, title}) => (
+    <button
+        onClick={onClick}
+        disabled={disabled}
+        style={styles}
+        type={"button"}
+        title={title || label}>
         {label}
     </button>
 );

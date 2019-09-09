@@ -15,12 +15,26 @@ const styles = {
     justifyContent: "space-around",
 };
 
-const Tools = () => (
+const Tools = ({running, onMinus, onReset, onStartPause, onPlus}) => (
     <div style={styles}>
-        <Button label={"-"} title={"Diminuer les minutes"} />
-        <Button label={"reset"} />
-        <Button label={"start"} title={"Démarrer le timer"} />
-        <Button label={"+"} title={"Augmenter les minutes"} />
+        <Button
+            disabled={running}
+            onClick={onMinus}
+            label={"-"}
+            title={"Diminuer les minutes"}
+        />
+        <Button disabled={running} onClick={onReset} label={"reset"} />
+        <Button
+            label={running ? "pause" : "start"}
+            onClick={onStartPause}
+            title={`${running ? "Mettre en pause" : "Démarrer"} le timer`}
+        />
+        <Button
+            disabled={running}
+            onClick={onPlus}
+            label={"+"}
+            title={"Augmenter les minutes"}
+        />
     </div>
 );
 export default Tools;
