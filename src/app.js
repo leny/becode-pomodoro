@@ -9,4 +9,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-ReactDOM.render(<p>{"Hello, world!"}</p>, document.querySelector("#root"));
+import Pomodoro from "./components/pomodoro";
+
+ReactDOM.render(<Pomodoro />, document.querySelector("#root"));
