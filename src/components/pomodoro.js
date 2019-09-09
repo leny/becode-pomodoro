@@ -10,6 +10,7 @@ import React, {useState, useEffect} from "react";
 
 import Display from "./display/display";
 import Tools from "./tools/tools";
+import Modal from "./modal/modal";
 
 const DEFAULT_POMODORO_VALUE = 0.05;
 
@@ -17,6 +18,7 @@ const Pomodoro = () => {
     const [running, setRunning] = useState(false);
     const [seconds, setSeconds] = useState(DEFAULT_POMODORO_VALUE * 60);
     const [intervalId, setIntervalId] = useState(null);
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         if (running) {
@@ -37,7 +39,7 @@ const Pomodoro = () => {
         if (seconds <= 0) {
             setSeconds(0);
             setRunning(false);
-            console.warn("Call modal!");
+            setShowModal(true);
         }
     }, [seconds]);
 
@@ -52,6 +54,16 @@ const Pomodoro = () => {
         setSeconds(seconds + 60);
     };
 
+    const handleModalClose = () => {
+        setShowModal(false);
+        handleReset();
+    };
+
+    const handleRestart = () => {
+        handleModalClose();
+        handleStartPause();
+    };
+
     return (
         <div>
             <Display seconds={seconds} running={running} />
@@ -61,6 +73,11 @@ const Pomodoro = () => {
                 onReset={handleReset}
                 onStartPause={handleStartPause}
                 onPlus={handlePlus}
+            />
+            <Modal
+                show={showModal}
+                onClose={handleModalClose}
+                onRestart={handleRestart}
             />
         </div>
     );
