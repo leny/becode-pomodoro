@@ -11,21 +11,21 @@ import React, {useState} from "react";
 import Display from "./display/display";
 import Tools from "./tools/tools";
 
-const DEFAULT_POMODORO_VALUE = 3.5;
+const DEFAULT_POMODORO_VALUE = 20;
 
 const Pomodoro = () => {
     const [running, setRunning] = useState(false);
-    const [seconds] = useState(DEFAULT_POMODORO_VALUE * 60);
+    const [seconds, setSeconds] = useState(DEFAULT_POMODORO_VALUE * 60);
 
     const handleMinus = () => {
-        console.warn("Pomodoro:handleMinus");
+        setSeconds(seconds < 60 ? 0 : seconds - 60);
     };
     const handleReset = () => {
-        console.warn("Pomodoro:handleReset");
+        setSeconds(DEFAULT_POMODORO_VALUE * 60);
     };
     const handleStartPause = () => setRunning(!running);
     const handlePlus = () => {
-        console.warn("Pomodoro:handlePlus");
+        setSeconds(seconds + 60);
     };
 
     return (
