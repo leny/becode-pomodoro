@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "npx eslint --fix --cache src",
     "build": "npx parcel build src/index.html",
-    "work": "npx parcel src/index.html"
+    "work": "npx parcel src/index.html --log-level 4"
   },
   "repository": {
     "type": "git",
