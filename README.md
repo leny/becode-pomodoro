@@ -1,22 +1,21 @@
 # BeCode: pomodoro
 
-> 🛰️ Short project's description
+> 🛰️ A small pomodoro with React - [hosted on netlify](https://heuristic-curran-04b6b3.netlify.com)
 
 * * *
 
-A short abstract of the project, goals, context… Anything that should be useful for a future reader.
-
 ## About
 
-A more detailed description of the project, with technical details: used langages and techs, context, etc.
+Making a pomodoro timer with React is a classic exercise to begin with.
 
-## Installation (if applicable)
+## Installation
 
-Details of process to install / setup dev environment for the project, if applicable.
+Simply run `npm install` then `npm run work` to fire up the watching mode and local server of Parcel.
 
-## Usage (if applicable)
+## Usage
 
-How to use the project, if applicable
+Simply go to the [hosted site on netlify](https://heuristic-curran-04b6b3.netlify.com).
+
 
 * * *
 
