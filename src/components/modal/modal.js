@@ -6,8 +6,10 @@
  * refactored at 09/09/2019
  */
 
-import React, {useState, useEffect} from "react";
-import ReactDOM from "react-dom";
+import React from "react";
+import useTimer from "../../core/hooks/use-timer";
+import {createPortal} from "react-dom";
+
 import Button from "../tools/button";
 import Display from "../display/display";
 
@@ -31,36 +33,18 @@ const Modal = ({show = false, onClose, onRestart}) => {
         return null;
     }
 
-    const [running, setRunning] = useState(true);
-    const [seconds, setSeconds] = useState(PAUSE_DURATION);
-    const [intervalId, setIntervalId] = useState(null);
+    const [{running, seconds}, {setRunning}] = useTimer(
+        PAUSE_DURATION,
+        true,
+        onRestart,
+    );
 
     const stopThen = next => () => {
         setRunning(false);
         next();
     };
 
-    useEffect(() => {
-        if (running) {
-            setIntervalId(
-                setInterval(() => setSeconds(Math.max(0, seconds - 1)), 1000),
-            );
-
-            if (seconds === 0) {
-                setRunning(false);
-                onRestart();
-            }
-        } else if (intervalId) {
-            clearInterval(intervalId);
-            setInterval(null);
-        }
-
-        return () => {
-            intervalId && clearInterval(intervalId);
-        };
-    }, [running, seconds]);
-
-    return ReactDOM.createPortal(
+    return createPortal(
         <div style={containerStyles}>
             <div className={"box"}>
                 <h4>{"It's over!"}</h4>
