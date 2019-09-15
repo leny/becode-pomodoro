@@ -8,5 +8,5 @@
 
 export const NBSP = "\u00a0";
 
-export const SESSION_DURATION = 3; // 1500 - 25 minutes
-export const PAUSE_DURATION = 3; // 300 - 5 minutes
+export const SESSION_DURATION = 1500; // 1500 - 25 minutes
+export const PAUSE_DURATION = 300; // 300 - 5 minutes
