@@ -10,7 +10,7 @@ import React from "react";
 
 import Button from "./button";
 
-const NBSP = "\u00a0";
+import {NBSP} from "../../core/constants";
 
 const Tools = ({running, onMinus, onReset, onStartPause, onPlus}) => (
     <div className={"is-flex"}>

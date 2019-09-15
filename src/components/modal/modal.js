@@ -11,9 +11,7 @@ import ReactDOM from "react-dom";
 import Button from "../tools/button";
 import Display from "../display/display";
 
-const NBSP = "\u00a0";
-// const PAUSE_DURATION=300;
-const PAUSE_DURATION = 3;
+import {PAUSE_DURATION, NBSP} from "../../core/constants";
 
 const containerStyles = {
     position: "fixed",

@@ -12,12 +12,11 @@ import Display from "./display/display";
 import Tools from "./tools/tools";
 import Modal from "./modal/modal";
 
-// const DEFAULT_POMODORO_VALUE = 25;
-const DEFAULT_POMODORO_VALUE = 0.05;
+import {SESSION_DURATION} from "../core/constants";
 
 const Pomodoro = () => {
     const [running, setRunning] = useState(false);
-    const [seconds, setSeconds] = useState(DEFAULT_POMODORO_VALUE * 60);
+    const [seconds, setSeconds] = useState(SESSION_DURATION);
     const [intervalId, setIntervalId] = useState(null);
     const [showModal, setShowModal] = useState(false);
 
@@ -45,7 +44,7 @@ const Pomodoro = () => {
         () => setSeconds(seconds < 60 ? 0 : seconds - 60),
         [seconds],
     );
-    const handleReset = () => setSeconds(DEFAULT_POMODORO_VALUE * 60);
+    const handleReset = () => setSeconds(SESSION_DURATION);
     const handleStartPause = useCallback(() => setRunning(!running), [running]);
     const handlePlus = useCallback(() => setSeconds(seconds + 60), [seconds]);
 
