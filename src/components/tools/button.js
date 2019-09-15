@@ -8,22 +8,13 @@
 
 import React from "react";
 
-const styles = {
-    backgroundColor: "transparent",
-    color: "silver",
-    border: ".1rem solid silver",
-    borderRadius: ".5rem",
-    fontSize: "1.5rem",
-    padding: ".5rem",
-    display: "block",
-    width: "100%",
-};
-
 const Button = ({disabled = false, onClick, label, title}) => (
     <button
         onClick={onClick}
         disabled={disabled}
-        style={styles}
+        className={["button", "is-primary", "is-medium", "is-fullwidth"].join(
+            " ",
+        )}
         type={"button"}
         title={title || label}>
         {label}

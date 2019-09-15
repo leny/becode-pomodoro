@@ -13,7 +13,7 @@ import Cyphers from "./cyphers";
 
 const Display = ({seconds, running, big = true}) => {
     const styles = {
-        fontSize: `${big ? 15 : 5}rem`,
+        fontSize: `${big ? 10 : 5}rem`,
         textAlign: "center",
     };
 

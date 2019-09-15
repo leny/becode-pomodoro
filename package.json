@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/leny/becode-pomodoro#readme",
   "dependencies": {
+    "bulma": "^0.7.5",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   },

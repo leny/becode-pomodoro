@@ -12,6 +12,8 @@ import Button from "../tools/button";
 import Display from "../display/display";
 
 const NBSP = "\u00a0";
+// const PAUSE_DURATION=300;
+const PAUSE_DURATION = 3;
 
 const containerStyles = {
     position: "fixed",
@@ -26,36 +28,13 @@ const containerStyles = {
     background: "rgba(0, 0, 0, 0.5)",
 };
 
-const modalStyles = {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    fontSize: "2rem",
-    width: `${(100 / 3) * 2}vw`,
-    height: `${100 / 3}vh`,
-    background: "#444",
-    border: ".1rem solid silver",
-    borderRadius: ".5rem",
-    padding: "2rem",
-    color: "white",
-};
-
-const actionsStyles = {
-    display: "flex",
-    justifyContent: "space-around",
-    alignItems: "center",
-    marginTop: "2rem",
-    width: "100%",
-};
-
 const Modal = ({show = false, onClose, onRestart}) => {
     if (!show) {
         return null;
     }
 
     const [running, setRunning] = useState(true);
-    const [seconds, setSeconds] = useState(10);
+    const [seconds, setSeconds] = useState(PAUSE_DURATION);
     const [intervalId, setIntervalId] = useState(null);
 
     const stopThen = next => () => {
@@ -85,14 +64,14 @@ const Modal = ({show = false, onClose, onRestart}) => {
 
     return ReactDOM.createPortal(
         <div style={containerStyles}>
-            <div style={modalStyles}>
+            <div className={"box"}>
                 <h4>{"It's over!"}</h4>
                 <p>{"Go take a break."}</p>
                 <p>
                     {"When the pause timer is over, a new session will start."}
                 </p>
                 <Display seconds={seconds} running={running} big={false} />
-                <div style={actionsStyles}>
+                <div className={"is-flex"}>
                     <Button label={"Arrêter"} onClick={stopThen(onClose)} />
                     {NBSP}
                     <Button
