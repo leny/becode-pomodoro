@@ -21,19 +21,19 @@ const Tools = ({running, onMinus, onReset, onStartPause, onPlus}) => (
             disabled={running}
             onClick={onMinus}
             label={"-"}
-            title={"Diminuer les minutes"}
+            title={"Remove one minute"}
         />
         <Button disabled={running} onClick={onReset} label={"reset"} />
         <Button
             label={running ? "pause" : "start"}
             onClick={onStartPause}
-            title={`${running ? "Mettre en pause" : "Démarrer"} le timer`}
+            title={`${running ? "Pause" : "Start"} the timer`}
         />
         <Button
             disabled={running}
             onClick={onPlus}
             label={"+"}
-            title={"Augmenter les minutes"}
+            title={"Add one minute"}
         />
     </div>
 );
