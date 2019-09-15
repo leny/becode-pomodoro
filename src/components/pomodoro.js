@@ -6,13 +6,14 @@
  * refactored at 09/09/2019
  */
 
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useCallback} from "react";
 
 import Display from "./display/display";
 import Tools from "./tools/tools";
 import Modal from "./modal/modal";
 
-const DEFAULT_POMODORO_VALUE = 25;
+// const DEFAULT_POMODORO_VALUE = 25;
+const DEFAULT_POMODORO_VALUE = 0.05;
 
 const Pomodoro = () => {
     const [running, setRunning] = useState(false);
@@ -22,9 +23,14 @@ const Pomodoro = () => {
 
     useEffect(() => {
         if (running) {
-            const id = setInterval(() => setSeconds(sec => sec - 1), 1000);
+            setIntervalId(
+                setInterval(() => setSeconds(Math.max(0, seconds - 1)), 1000),
+            );
 
-            setIntervalId(id);
+            if (seconds === 0) {
+                setRunning(false);
+                setShowModal(true);
+            }
         } else if (intervalId) {
             clearInterval(intervalId);
             setIntervalId(null);
@@ -33,26 +39,15 @@ const Pomodoro = () => {
         return () => {
             intervalId && clearInterval(intervalId);
         };
-    }, [running]);
+    }, [running, seconds]);
 
-    useEffect(() => {
-        if (seconds <= 0) {
-            setSeconds(0);
-            setRunning(false);
-            setShowModal(true);
-        }
-    }, [seconds]);
-
-    const handleMinus = () => {
-        setSeconds(seconds < 60 ? 0 : seconds - 60);
-    };
-    const handleReset = () => {
-        setSeconds(DEFAULT_POMODORO_VALUE * 60);
-    };
-    const handleStartPause = () => setRunning(!running);
-    const handlePlus = () => {
-        setSeconds(seconds + 60);
-    };
+    const handleMinus = useCallback(
+        () => setSeconds(seconds < 60 ? 0 : seconds - 60),
+        [seconds],
+    );
+    const handleReset = () => setSeconds(DEFAULT_POMODORO_VALUE * 60);
+    const handleStartPause = useCallback(() => setRunning(!running), [running]);
+    const handlePlus = useCallback(() => setSeconds(seconds + 60), [seconds]);
 
     const handleModalClose = () => {
         setShowModal(false);
