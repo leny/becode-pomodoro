@@ -11,12 +11,12 @@ import PropTypes from "prop-types";
 
 import Cyphers from "./cyphers";
 
-const styles = {
-    fontSize: "15rem",
-    textAlign: "center",
-};
+const Display = ({seconds, running, big = true}) => {
+    const styles = {
+        fontSize: `${big ? 15 : 5}rem`,
+        textAlign: "center",
+    };
 
-const Display = ({seconds, running}) => {
     let separator = ":";
 
     if (running) {
@@ -33,6 +33,7 @@ const Display = ({seconds, running}) => {
 };
 
 Display.propTypes = {
+    big: PropTypes.bool,
     seconds: PropTypes.number.isRequired,
     running: PropTypes.bool,
 };
